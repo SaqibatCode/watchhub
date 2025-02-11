@@ -48,6 +48,7 @@ app.use('/api/admin', adminRoutes); // Add admin routes
 app.listen(3000, async () => {
     try {
         await sequelize.authenticate(); // Ensure DB connection is working
+        await sequelize.sync({ force: false });
         console.log('Database connected and server is running on http://localhost:3000');
     } catch (error) {
         console.error('Error connecting to the database:', error);
