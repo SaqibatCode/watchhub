@@ -20,7 +20,9 @@ router.post('/register', async (req, res) => {
         name,
         email,
         password,
-        phone
+        address,
+        phone,
+      
     } = req.body;
 
     try {
@@ -44,7 +46,9 @@ router.post('/register', async (req, res) => {
             name,
             email,
             password: hashedPassword,
-            phone
+            address,
+            phone,
+           
         });
 
         res.status(201).json({

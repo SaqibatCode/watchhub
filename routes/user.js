@@ -20,6 +20,7 @@ router.get('/profile', authenticateJWT, async (req, res) => {
             name: user.name,
             email: user.email,
             phone: user.phone,
+            address: user.address
         });
     } catch (error) {
         console.error('Error fetching user profile:', error);
@@ -34,7 +35,8 @@ router.put('/profile', authenticateJWT, async (req, res) => {
     const {
         name,
         email,
-        phone
+        phone,
+        address
     } = req.body;
     try {
         const userId = req.user.userId; // Get user ID from JWT
@@ -50,6 +52,7 @@ router.put('/profile', authenticateJWT, async (req, res) => {
         user.name = name || user.name;
         user.email = email || user.email;
         user.phone = phone || user.phone;
+        user.address = address || user.address;
         await user.save();
 
         res.status(200).json({
