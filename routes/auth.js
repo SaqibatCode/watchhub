@@ -19,7 +19,8 @@ router.post('/register', async (req, res) => {
     const {
         name,
         email,
-        password
+        password,
+        phone
     } = req.body;
 
     try {
@@ -43,6 +44,7 @@ router.post('/register', async (req, res) => {
             name,
             email,
             password: hashedPassword,
+            phone
         });
 
         res.status(201).json({
